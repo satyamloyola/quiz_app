@@ -11,8 +11,12 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import django_heroku
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import STATIC as STATIC
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -77,9 +81,9 @@ WSGI_APPLICATION = 'quizapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sampledb',
+        'NAME': 'mysql',
         'USER':'root',
-        'PASSWORD':'',
+        'PASSWORD':'Satyam@123',
         'HOST':'localhost',
         'PORT':'3306',
         'OPTIONS':{
@@ -126,3 +130,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC ROOT = os.path.join(BASE_DIR, 'static')
+
+#Activate Django-Heroku.
+django_heroku.settings(locals())
